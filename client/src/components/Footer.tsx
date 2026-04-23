@@ -1,21 +1,17 @@
 /*
- * Design: Refined Elegance
- * Footer: Navy background, gold accents, clean layout
+ * Design: Refined Elegance — Hebashi Holding Group
+ * Footer: Navy background, gold accents, HHG branding
  */
 import { ArrowUp } from "lucide-react";
 
 const footerLinks = {
-  company: [
-    { label: "About Us", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Testimonials", href: "#testimonials" },
+  navigation: [
+    { label: "About", href: "#about" },
+    { label: "Sectors", href: "#sectors" },
+    { label: "Platforms", href: "#platforms" },
+    { label: "Presence", href: "#presence" },
+    { label: "ESG", href: "#esg" },
     { label: "Contact", href: "#contact" },
-  ],
-  services: [
-    { label: "Strategic Planning", href: "#services" },
-    { label: "Financial Advisory", href: "#services" },
-    { label: "Team Development", href: "#services" },
-    { label: "Market Expansion", href: "#services" },
   ],
 };
 
@@ -32,7 +28,7 @@ export default function Footer() {
   return (
     <footer className="bg-navy pt-16 pb-8">
       <div className="container">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <a
@@ -41,52 +37,32 @@ export default function Footer() {
               className="text-2xl font-bold text-white mb-4 inline-block"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              Apex<span className="text-gold">.</span>
+              HHG<span className="text-gold">.</span>
             </a>
             <p
-              className="text-white/50 leading-relaxed max-w-sm text-sm"
+              className="text-white/50 leading-relaxed max-w-md text-sm mb-4"
               style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}
             >
-              Elevating businesses through strategic consulting, innovative
-              solutions, and a relentless commitment to excellence. Your success
-              is our mission.
+              Building integrated platforms for long-term value creation across global markets.
+            </p>
+            <p
+              className="text-white/30 text-xs"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              Est. 2008
             </p>
           </div>
 
-          {/* Company Links */}
+          {/* Navigation Links */}
           <div>
             <h4
               className="text-sm font-medium tracking-wider uppercase text-gold mb-4"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              Company
+              Navigation
             </h4>
             <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-                    className="text-sm text-white/50 hover:text-gold transition-colors duration-300"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services Links */}
-          <div>
-            <h4
-              className="text-sm font-medium tracking-wider uppercase text-gold mb-4"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              Services
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
+              {footerLinks.navigation.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
@@ -111,7 +87,7 @@ export default function Footer() {
             className="text-xs text-white/40"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            &copy; {new Date().getFullYear()} Apex Consulting. All rights reserved.
+            &copy; {new Date().getFullYear()} Hebashi Holding Group. All rights reserved.
           </p>
           <button
             onClick={scrollToTop}

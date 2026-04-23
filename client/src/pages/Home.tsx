@@ -1,13 +1,18 @@
 /*
- * Design: Refined Elegance — Scandinavian-inspired business website
+ * Design: Refined Elegance — Hebashi Holding Group
  * Warm cream bg, navy text, gold accents, Playfair Display + Lato fonts
- * Sections: Hero, About, Services, Testimonials, Contact, Footer
+ * Sections: Hero, About, Operating Model, Sectors, Platforms, Presence,
+ *           Technology, ESG, Leadership, Contact, Footer
  */
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
-import ServicesSection from "@/components/ServicesSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
+import SectorsSection from "@/components/SectorsSection";
+import PlatformsSection from "@/components/PlatformsSection";
+import PresenceSection from "@/components/PresenceSection";
+import TechnologySection from "@/components/TechnologySection";
+import ESGSection from "@/components/ESGSection";
+import LeadershipSection from "@/components/LeadershipSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
@@ -17,8 +22,12 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <AboutSection />
-      <ServicesSection />
-      <TestimonialsSection />
+      <SectorsSection />
+      <PlatformsSection />
+      <PresenceSection />
+      <TechnologySection />
+      <ESGSection />
+      <LeadershipSection />
       <ContactSection />
       <Footer />
     </div>

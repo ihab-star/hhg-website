@@ -1,7 +1,6 @@
 /*
- * Design: Refined Elegance
+ * Design: Refined Elegance — Hebashi Holding Group
  * Hero: Full-width image background with overlay, elegant typography
- * Playfair Display heading, Lato body, gold accent line
  */
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
@@ -23,10 +22,9 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <img
           src={HERO_IMAGE}
-          alt="Modern corporate office"
+          alt="Hebashi Holding Group headquarters"
           className="w-full h-full object-cover"
         />
-        {/* Overlay: dark gradient from left for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#1B2A4A]/85 via-[#1B2A4A]/50 to-transparent" />
       </div>
 
@@ -38,14 +36,22 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
+            <p
+              className="text-sm font-medium tracking-[0.3em] uppercase text-gold mb-4"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              Hebashi Holding Group
+            </p>
             <div className="gold-line-wide mb-6" />
             <h1
               className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white mb-6"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              Elevate Your
+              Building Scalable
               <br />
-              <span className="text-gold">Business</span> Vision
+              <span className="text-gold">Business Platforms</span>
+              <br />
+              Across Emerging Markets
             </h1>
           </motion.div>
 
@@ -56,8 +62,7 @@ export default function HeroSection() {
             className="text-lg sm:text-xl text-white/80 leading-relaxed mb-10 max-w-lg"
             style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}
           >
-            We craft strategic solutions that transform ambitious ideas into
-            measurable results. Partner with us to unlock your full potential.
+            Integrated ecosystems powered by assets, intelligence, and strategic execution.
           </motion.p>
 
           <motion.div
@@ -67,15 +72,15 @@ export default function HeroSection() {
             className="flex flex-wrap gap-4"
           >
             <a
-              href="#services"
+              href="#platforms"
               onClick={(e) => {
                 e.preventDefault();
-                document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" });
+                document.querySelector("#platforms")?.scrollIntoView({ behavior: "smooth" });
               }}
               className="inline-flex items-center px-8 py-3.5 text-sm font-medium tracking-wider uppercase bg-gold text-navy hover:bg-gold-light transition-colors duration-300"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              Our Services
+              Explore Our Platforms
             </a>
             <a
               href="#about"
@@ -86,7 +91,7 @@ export default function HeroSection() {
               className="inline-flex items-center px-8 py-3.5 text-sm font-medium tracking-wider uppercase border-2 border-white/40 text-white hover:border-gold hover:text-gold transition-colors duration-300"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              Learn More
+              Who We Are
             </a>
           </motion.div>
         </div>

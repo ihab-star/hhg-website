@@ -1,21 +1,13 @@
 /*
- * Design: Refined Elegance
- * Contact: Split layout — form left, info + image right
- * Gold accents, warm cream bg, elegant form styling
+ * Design: Refined Elegance — Hebashi Holding Group
+ * Contact: Form + info, HHG-specific content
  */
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Globe, Send } from "lucide-react";
 import { toast } from "sonner";
 
 const CONTACT_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663591529917/L5JksiWy8AeHi8qNJL6E4C/contact-section-ghjiyFNif5CduHCWitmekk.webp";
-
-const contactInfo = [
-  { icon: MapPin, label: "Address", value: "123 Business Avenue, Suite 500\nNew York, NY 10001" },
-  { icon: Phone, label: "Phone", value: "+1 (555) 123-4567" },
-  { icon: Mail, label: "Email", value: "hello@apexconsulting.com" },
-  { icon: Clock, label: "Hours", value: "Mon – Fri: 9:00 AM – 6:00 PM" },
-];
 
 export default function ContactSection() {
   const sectionRef = useRef(null);
@@ -23,16 +15,15 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
     message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success("Thank you! Your message has been sent successfully.", {
-      description: "We'll get back to you within 24 hours.",
+      description: "We'll get back to you shortly.",
     });
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFormData({ name: "", email: "", message: "" });
   };
 
   const handleChange = (
@@ -59,20 +50,19 @@ export default function ContactSection() {
             className="text-sm font-medium tracking-widest uppercase text-gold mb-3"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            Get in Touch
+            Contact
           </p>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy leading-tight mb-5"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            Let's Start a <span className="text-gold">Conversation</span>
+            Get in <span className="text-gold">Touch</span>
           </h2>
           <p
             className="text-warm-gray text-base lg:text-lg leading-relaxed"
             style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}
           >
-            Ready to take your business to the next level? Reach out and let's
-            discuss how we can help you achieve your goals.
+            For general inquiries, partnerships, or institutional engagement, please contact us.
           </p>
         </motion.div>
 
@@ -91,14 +81,14 @@ export default function ContactSection() {
                     className="block text-xs font-medium tracking-wider uppercase text-navy mb-2"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
-                    Full Name
+                    Name
                   </label>
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="John Doe"
+                    placeholder="Your full name"
                     required
                     className={inputClasses}
                     style={{ fontFamily: "var(--font-body)" }}
@@ -109,37 +99,19 @@ export default function ContactSection() {
                     className="block text-xs font-medium tracking-wider uppercase text-navy mb-2"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
-                    Email Address
+                    Email
                   </label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="john@example.com"
+                    placeholder="your@email.com"
                     required
                     className={inputClasses}
                     style={{ fontFamily: "var(--font-body)" }}
                   />
                 </div>
-              </div>
-              <div>
-                <label
-                  className="block text-xs font-medium tracking-wider uppercase text-navy mb-2"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  placeholder="How can we help?"
-                  required
-                  className={inputClasses}
-                  style={{ fontFamily: "var(--font-body)" }}
-                />
               </div>
               <div>
                 <label
@@ -152,7 +124,7 @@ export default function ContactSection() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your project..."
+                  placeholder="Your message..."
                   required
                   rows={5}
                   className={`${inputClasses} resize-none`}
@@ -165,7 +137,7 @@ export default function ContactSection() {
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 <Send size={16} />
-                Send Message
+                Submit
               </button>
             </form>
           </motion.div>
@@ -181,7 +153,7 @@ export default function ContactSection() {
             <div className="relative mb-8 overflow-hidden hidden lg:block">
               <img
                 src={CONTACT_IMAGE}
-                alt="Our office"
+                alt="HHG office"
                 className="w-full h-48 object-cover"
               />
               <div className="absolute inset-0 bg-navy/20" />
@@ -189,30 +161,45 @@ export default function ContactSection() {
 
             {/* Info Items */}
             <div className="space-y-6">
-              {contactInfo.map((item, i) => {
-                const Icon = item.icon;
-                return (
-                  <div key={i} className="flex gap-4">
-                    <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center border border-gold/30 text-gold">
-                      <Icon size={18} strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <div
-                        className="text-xs font-medium tracking-wider uppercase text-navy mb-1"
-                        style={{ fontFamily: "var(--font-body)" }}
-                      >
-                        {item.label}
-                      </div>
-                      <div
-                        className="text-sm text-warm-gray whitespace-pre-line"
-                        style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}
-                      >
-                        {item.value}
-                      </div>
-                    </div>
+              <div className="flex gap-4">
+                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center border border-gold/30 text-gold">
+                  <MapPin size={18} strokeWidth={1.5} />
+                </div>
+                <div>
+                  <div
+                    className="text-xs font-medium tracking-wider uppercase text-navy mb-1"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    Headquarters
                   </div>
-                );
-              })}
+                  <div
+                    className="text-sm text-warm-gray"
+                    style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}
+                  >
+                    Georgia — Strategic Gateway
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center border border-gold/30 text-gold">
+                  <Globe size={18} strokeWidth={1.5} />
+                </div>
+                <div>
+                  <div
+                    className="text-xs font-medium tracking-wider uppercase text-navy mb-1"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    Operations
+                  </div>
+                  <div
+                    className="text-sm text-warm-gray"
+                    style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}
+                  >
+                    UAE · Egypt · Turkey · Oman · Malaysia
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

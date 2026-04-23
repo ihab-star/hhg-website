@@ -1,5 +1,5 @@
 /*
- * Design: Refined Elegance — Scandinavian-inspired
+ * Design: Refined Elegance — Hebashi Holding Group
  * Navbar: Clean, minimal with gold accent underlines on hover
  * Font: Playfair Display for logo, Lato for nav links
  * Colors: Navy text on cream background, gold accents
@@ -9,10 +9,11 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Sectors", href: "#sectors" },
+  { label: "Platforms", href: "#platforms" },
+  { label: "Presence", href: "#presence" },
+  { label: "ESG", href: "#esg" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -48,7 +49,7 @@ export default function Navbar() {
           className={`font-heading text-2xl font-bold tracking-tight transition-colors duration-300 ${scrolled ? 'text-navy' : 'text-white'}`}
           style={{ fontFamily: "var(--font-heading)" }}
         >
-          Apex<span className="text-gold">.</span>
+          HHG<span className="text-gold">.</span>
         </a>
 
         {/* Desktop Nav */}
