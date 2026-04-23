@@ -1,6 +1,7 @@
 /*
  * Design: Refined Elegance — Hebashi Holding Group
- * Navbar: Clean, minimal with gold accent underlines, language switcher
+ * Navbar: Clean, minimal — transparent over hero, subtle white/cream after scroll.
+ * No blue background. No scroll flicker. Smooth transitions.
  */
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Globe } from "lucide-react";
@@ -31,8 +32,8 @@ export default function Navbar() {
   const langRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -54,36 +55,41 @@ export default function Navbar() {
 
   const currentLang = languages.find((l) => l.code === lang)!;
 
+  /* ── Style tokens ── */
+  const navBg = scrolled
+    ? "bg-white/95 backdrop-blur-md shadow-[0_1px_20px_rgba(0,0,0,0.06)]"
+    : "bg-transparent";
+
+  const textColor = scrolled ? "text-[#1B2A4A]" : "text-white/90";
+  const textHover = scrolled ? "hover:text-[#1B2A4A]" : "hover:text-white";
+  const logoColor = scrolled ? "text-[#1B2A4A]" : "text-white";
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-cream/95 backdrop-blur-md shadow-[0_1px_0_0_var(--color-gold-light)]"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${navBg}`}
     >
       <nav className="container flex items-center justify-between h-20">
         {/* Logo */}
         <a
           href="#home"
           onClick={(e) => { e.preventDefault(); scrollTo("#home"); }}
-          className={`font-heading text-2xl font-bold tracking-tight transition-colors duration-300 ${scrolled ? 'text-navy' : 'text-white'}`}
+          className={`font-heading text-2xl font-bold tracking-tight transition-colors duration-500 ${logoColor}`}
           style={{ fontFamily: "var(--font-heading)" }}
         >
           HHG<span className="text-gold">.</span>
         </a>
 
         {/* Desktop Nav */}
-        <ul className="hidden lg:flex items-center gap-6">
+        <ul className="hidden lg:flex items-center gap-7">
           {navKeys.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-                className={`relative text-sm font-medium tracking-wide transition-colors duration-300 group ${scrolled ? 'text-navy-light hover:text-navy' : 'text-white/80 hover:text-white'}`}
+                className={`relative text-[13px] font-medium tracking-[0.06em] uppercase transition-colors duration-500 group ${textColor} ${textHover}`}
               >
                 {t(`nav.${link.key}`)}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gold transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-gold transition-all duration-300 group-hover:w-full" />
               </a>
             </li>
           ))}
@@ -95,30 +101,30 @@ export default function Navbar() {
           <div className="relative" ref={langRef}>
             <button
               onClick={() => setLangOpen(!langOpen)}
-              className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium tracking-wide transition-colors duration-300 border ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium tracking-wider transition-all duration-500 border rounded-sm ${
                 scrolled
-                  ? "text-navy border-gold/30 hover:border-gold"
-                  : "text-white/80 border-white/30 hover:border-gold hover:text-white"
+                  ? "text-[#1B2A4A] border-[#1B2A4A]/15 hover:border-gold"
+                  : "text-white/80 border-white/25 hover:border-gold hover:text-white"
               }`}
             >
-              <Globe size={14} />
+              <Globe size={13} />
               <span>{currentLang.flag}</span>
             </button>
             <AnimatePresence>
               {langOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: -8 }}
+                  initial={{ opacity: 0, y: -6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute top-full mt-2 right-0 bg-white border border-gold/20 shadow-lg min-w-[140px] z-50"
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.18 }}
+                  className="absolute top-full mt-2 right-0 bg-white border border-gray-100 shadow-xl shadow-black/5 min-w-[140px] z-50 rounded-sm overflow-hidden"
                 >
                   {languages.map((l) => (
                     <button
                       key={l.code}
                       onClick={() => { setLang(l.code); setLangOpen(false); }}
                       className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors duration-200 hover:bg-cream ${
-                        lang === l.code ? "text-gold font-medium" : "text-navy"
+                        lang === l.code ? "text-gold font-medium" : "text-[#1B2A4A]"
                       }`}
                     >
                       <span className="text-xs font-bold tracking-wider w-6">{l.flag}</span>
@@ -134,7 +140,11 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={(e) => { e.preventDefault(); scrollTo("#contact"); }}
-            className={`inline-flex items-center px-6 py-2.5 text-sm font-medium tracking-wide transition-colors duration-300 ${scrolled ? 'text-primary-foreground bg-navy hover:bg-navy-light' : 'text-navy bg-gold hover:bg-gold-light'}`}
+            className={`inline-flex items-center px-6 py-2 text-xs font-semibold tracking-[0.08em] uppercase transition-all duration-500 rounded-sm ${
+              scrolled
+                ? "bg-[#1B2A4A] text-white hover:bg-[#2a3d62]"
+                : "bg-gold text-[#1B2A4A] hover:bg-gold-light"
+            }`}
           >
             {t("nav.getInTouch")}
           </a>
@@ -143,7 +153,7 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className={`lg:hidden p-2 transition-colors duration-300 ${scrolled ? 'text-navy' : 'text-white'}`}
+          className={`lg:hidden p-2 transition-colors duration-500 ${scrolled ? "text-[#1B2A4A]" : "text-white"}`}
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -157,8 +167,8 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden bg-cream/98 backdrop-blur-md border-t border-gold-light/30 overflow-hidden"
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="lg:hidden bg-white/98 backdrop-blur-md border-t border-gray-100 overflow-hidden"
           >
             <ul className="container py-6 space-y-4">
               {navKeys.map((link) => (
@@ -166,23 +176,23 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-                    className="block text-base font-medium text-navy-light hover:text-navy transition-colors"
+                    className="block text-base font-medium text-[#1B2A4A]/80 hover:text-[#1B2A4A] transition-colors"
                   >
                     {t(`nav.${link.key}`)}
                   </a>
                 </li>
               ))}
               {/* Mobile Language Switcher */}
-              <li className="pt-3 border-t border-gold/10">
+              <li className="pt-3 border-t border-gray-100">
                 <div className="flex gap-2">
                   {languages.map((l) => (
                     <button
                       key={l.code}
                       onClick={() => { setLang(l.code); setMobileOpen(false); }}
-                      className={`px-4 py-2 text-sm font-medium border transition-colors duration-200 ${
+                      className={`px-4 py-2 text-sm font-medium border rounded-sm transition-colors duration-200 ${
                         lang === l.code
-                          ? "bg-navy text-white border-navy"
-                          : "text-navy border-gold/30 hover:border-gold"
+                          ? "bg-[#1B2A4A] text-white border-[#1B2A4A]"
+                          : "text-[#1B2A4A] border-gray-200 hover:border-gold"
                       }`}
                     >
                       {l.flag}
@@ -194,7 +204,7 @@ export default function Navbar() {
                 <a
                   href="#contact"
                   onClick={(e) => { e.preventDefault(); scrollTo("#contact"); }}
-                  className="inline-flex items-center px-6 py-2.5 text-sm font-medium text-primary-foreground bg-navy mt-2"
+                  className="inline-flex items-center px-6 py-2.5 text-sm font-semibold tracking-wider uppercase text-white bg-[#1B2A4A] rounded-sm mt-2"
                 >
                   {t("nav.getInTouch")}
                 </a>
