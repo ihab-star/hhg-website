@@ -2,7 +2,7 @@
  * Design: Refined Elegance — Hebashi Holding Group
  * Warm cream bg, navy text, gold accents, Playfair Display + Lato fonts
  * Sections: Hero, About, Operating Model, Sectors, Platforms, Presence,
- *           Technology, ESG, Leadership, Contact, Footer
+ *           Technology, ESG, Leadership, News & Insights, Contact, Footer
  */
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -13,6 +13,7 @@ import PresenceSection from "@/components/PresenceSection";
 import TechnologySection from "@/components/TechnologySection";
 import ESGSection from "@/components/ESGSection";
 import LeadershipSection from "@/components/LeadershipSection";
+import NewsSection from "@/components/NewsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
@@ -28,6 +29,7 @@ export default function Home() {
       <TechnologySection />
       <ESGSection />
       <LeadershipSection />
+      <NewsSection />
       <ContactSection />
       <Footer />
     </div>
