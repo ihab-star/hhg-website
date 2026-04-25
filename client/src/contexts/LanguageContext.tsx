@@ -124,9 +124,9 @@ const translations: Record<Lang, any> = {
         cat: "Investment & Real Estate",
         desc: "A modern investment company focused on creating accessible opportunities in real estate and strategic assets. Through innovation, structured investment models, and growth-driven projects, Virtu connects investors with high-potential opportunities designed for long-term value creation.",
       },
-      hmbc: {
+      hmpc: {
         cat: "Media & Production",
-        desc: "A dynamic media and production company specializing in film production, creative content, and entertainment projects. HMBC focuses on delivering high-quality cinematic experiences, innovative storytelling, and professional production services for regional and international markets.",
+        desc: "A dynamic media and production company specializing in film production, creative content, and entertainment projects. HMPC focuses on delivering high-quality cinematic experiences, innovative storytelling, and professional production services for regional and international markets.",
       },
       batumi: {
         cat: "Hospitality & Real Estate",
@@ -248,7 +248,7 @@ const translations: Record<Lang, any> = {
       n3desc: "HHG integrates advanced artificial intelligence systems to enhance decision-making and operational performance across its portfolio.",
       n4date: "February 20, 2026",
       n4cat: "Media",
-      n4title: "HMBC Secures International Film Production Partnership",
+      n4title: "HMPC Secures International Film Production Partnership",
       n4desc: "A landmark collaboration bringing world-class cinematic production capabilities to regional and international markets.",
     },
     contact: {
@@ -349,7 +349,7 @@ const translations: Record<Lang, any> = {
         cat: "ინვესტიციები და უძრავი ქონება",
         desc: "თანამედროვე საინვესტიციო კომპანია, ორიენტირებული უძრავ ქონებასა და სტრატეგიულ აქტივებში ხელმისაწვდომი შესაძლებლობების შექმნაზე.",
       },
-      hmbc: {
+      hmpc: {
         cat: "მედია და პროდუქცია",
         desc: "დინამიური მედია და საპროდუქციო კომპანია, სპეციალიზირებული ფილმების წარმოებაში, შემოქმედებით კონტენტსა და გასართობ პროექტებში.",
       },
@@ -473,7 +473,7 @@ const translations: Record<Lang, any> = {
       n3desc: "HHG ინტეგრირებს მოწინავე ხელოვნური ინტელექტის სისტემებს გადაწყვეტილების მიღების გასაუმჯობესებლად.",
       n4date: "20 თებერვალი, 2026",
       n4cat: "მედია",
-      n4title: "HMBC უზრუნველყოფს საერთაშორისო ფილმის წარმოების პარტნიორობას",
+      n4title: "HMPC უზრუნველყოფს საერთაშორისო ფილმის წარმოების პარტნიორობას",
       n4desc: "მნიშვნელოვანი თანამშრომლობა მსოფლიო დონის კინემატოგრაფიული წარმოების შესაძლებლობების მოტანისთვის.",
     },
     contact: {
@@ -574,9 +574,9 @@ const translations: Record<Lang, any> = {
         cat: "الاستثمار والعقارات",
         desc: "شركة استثمارية حديثة تركز على خلق فرص متاحة في العقارات والأصول الاستراتيجية. من خلال الابتكار ونماذج الاستثمار المهيكلة والمشاريع المدفوعة بالنمو.",
       },
-      hmbc: {
+      hmpc: {
         cat: "الإعلام والإنتاج",
-        desc: "شركة إعلام وإنتاج ديناميكية متخصصة في إنتاج الأفلام والمحتوى الإبداعي والمشاريع الترفيهية. تركز HMBC على تقديم تجارب سينمائية عالية الجودة.",
+        desc: "شركة إعلام وإنتاج ديناميكية متخصصة في إنتاج الأفلام والمحتوى الإبداعي والمشاريع الترفيهية. تركز HMPC على تقديم تجارب سينمائية عالية الجودة.",
       },
       batumi: {
         cat: "الضيافة والعقارات",
@@ -698,7 +698,7 @@ const translations: Record<Lang, any> = {
       n3desc: "تدمج HHG أنظمة ذكاء اصطناعي متقدمة لتعزيز اتخاذ القرار والأداء التشغيلي.",
       n4date: "20 فبراير 2026",
       n4cat: "الإعلام",
-      n4title: "HMBC تؤمن شراكة إنتاج أفلام دولية",
+      n4title: "HMPC تؤمن شراكة إنتاج أفلام دولية",
       n4desc: "تعاون بارز يجلب قدرات إنتاج سينمائي عالمية المستوى للأسواق الإقليمية والدولية.",
     },
     contact: {

@@ -1,9 +1,11 @@
 /*
  * Design: Refined Elegance — Hebashi Holding Group
- * Footer: Navy background, gold accents, HHG branding
+ * Footer: Navy background, gold accents, HHG white logo
  */
 import { ArrowUp } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+
+const HHG_LOGO_WHITE = "/manus-storage/hhglogowhite_babfdaea.png";
 
 const navKeys = ["about", "sectors", "platforms", "presence", "esg", "news", "contact"];
 const navHrefs = ["#about", "#sectors", "#platforms", "#presence", "#esg", "#news", "#contact"];
@@ -28,9 +30,13 @@ export default function Footer() {
             <a
               href="#home"
               onClick={(e) => { e.preventDefault(); scrollToTop(); }}
-              className="text-2xl font-bold text-white mb-4 inline-block"
+              className="inline-block mb-4 hover:opacity-80 transition-opacity duration-300"
             >
-              HHG<span className="text-gold">.</span>
+              <img
+                src={HHG_LOGO_WHITE}
+                alt="Hebashi Holding Group"
+                className="h-12 w-auto object-contain"
+              />
             </a>
             <p className="text-white/50 leading-relaxed max-w-md text-sm mb-4" style={{ fontWeight: 300 }}>
               {t("footer.desc")}

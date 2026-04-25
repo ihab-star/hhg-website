@@ -1,12 +1,15 @@
 /*
  * Design: Refined Elegance — Hebashi Holding Group
  * Navbar: Clean, minimal — transparent over hero, subtle white/cream after scroll.
- * No blue background. No scroll flicker. Smooth transitions.
+ * Uses HHG logo images (white on dark, black on light).
  */
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage, type Lang } from "@/contexts/LanguageContext";
+
+const HHG_LOGO_WHITE = "/manus-storage/hhglogowhite_babfdaea.png";
+const HHG_LOGO_BLACK = "/manus-storage/HHGlogoblack_3b2ba390.jpg";
 
 const navKeys = [
   { key: "about", href: "#about" },
@@ -62,7 +65,6 @@ export default function Navbar() {
 
   const textColor = scrolled ? "text-[#1B2A4A]" : "text-white/90";
   const textHover = scrolled ? "hover:text-[#1B2A4A]" : "hover:text-white";
-  const logoColor = scrolled ? "text-[#1B2A4A]" : "text-white";
 
   return (
     <header
@@ -73,10 +75,13 @@ export default function Navbar() {
         <a
           href="#home"
           onClick={(e) => { e.preventDefault(); scrollTo("#home"); }}
-          className={`font-heading text-2xl font-bold tracking-tight transition-colors duration-500 ${logoColor}`}
-          style={{ fontFamily: "var(--font-heading)" }}
+          className="transition-opacity duration-500 hover:opacity-80 flex-shrink-0"
         >
-          HHG<span className="text-gold">.</span>
+          <img
+            src={scrolled ? HHG_LOGO_BLACK : HHG_LOGO_WHITE}
+            alt="Hebashi Holding Group"
+            className="h-10 w-auto object-contain transition-all duration-500"
+          />
         </a>
 
         {/* Desktop Nav */}

@@ -1,6 +1,7 @@
 /*
  * Design: Refined Elegance — Hebashi Holding Group
  * Platforms: Cards for each of the 7 integrated platforms
+ * HMBC renamed to HMPC. Logos for HMPC and OTI included.
  */
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -8,8 +9,17 @@ import { ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const platformKeys = ["virtu", "hmbc", "batumi", "zmc", "ctc", "oti", "caucasus"];
-const platformNames = ["Virtu", "HMBC", "Batumi Pearl", "ZMC", "CTC", "OTI Real Estate", "Caucasus Paradise"];
+const HMPC_LOGO = "/manus-storage/HMPClogo_e6637af3.png";
+const OTI_LOGO = "/manus-storage/OtilogoB_73e91374.png";
+
+const platformKeys = ["virtu", "hmpc", "batumi", "zmc", "ctc", "oti", "caucasus"];
+const platformNames = ["Virtu", "HMPC", "Batumi Pearl", "ZMC", "CTC", "OTI Development", "Caucasus Paradise"];
+
+/* Map platform keys to their logos (only for those that have logos) */
+const platformLogos: Record<string, string> = {
+  hmpc: HMPC_LOGO,
+  oti: OTI_LOGO,
+};
 
 export default function PlatformsSection() {
   const { t, dir } = useLanguage();
@@ -57,6 +67,18 @@ export default function PlatformsSection() {
               className="group relative bg-white p-8 border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:shadow-lg"
             >
               <div className={`absolute top-0 ${dir === "rtl" ? "right-0" : "left-0"} w-0 h-[2px] bg-gold group-hover:w-full transition-all duration-500`} />
+              
+              {/* Logo if available */}
+              {platformLogos[key] && (
+                <div className="mb-4">
+                  <img
+                    src={platformLogos[key]}
+                    alt={platformNames[i]}
+                    className="h-10 w-auto object-contain"
+                  />
+                </div>
+              )}
+              
               <p className="text-xs font-medium tracking-widest uppercase text-gold mb-4">
                 {t(`platforms.${key}.cat`)}
               </p>
@@ -88,6 +110,18 @@ export default function PlatformsSection() {
               className="group relative bg-white p-6 border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:shadow-lg"
             >
               <div className={`absolute top-0 ${dir === "rtl" ? "right-0" : "left-0"} w-0 h-[2px] bg-gold group-hover:w-full transition-all duration-500`} />
+              
+              {/* Logo if available */}
+              {platformLogos[key] && (
+                <div className="mb-3">
+                  <img
+                    src={platformLogos[key]}
+                    alt={platformNames[i + 3]}
+                    className="h-8 w-auto object-contain"
+                  />
+                </div>
+              )}
+              
               <p className="text-xs font-medium tracking-widest uppercase text-gold mb-3">
                 {t(`platforms.${key}.cat`)}
               </p>

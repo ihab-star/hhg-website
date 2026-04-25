@@ -1,16 +1,18 @@
 /*
  * Design: Refined Elegance — Hebashi Holding Group
  * Hero Splash: Full-screen cinematic entrance with Tbilisi background.
+ * Uses HHG white logo image instead of text.
  * - Fade from black → reveal
  * - Background zoom-in (scale 1.1 → 1 over 3s)
- * - Title: fade + slide up + scale with letter-spacing glow
+ * - Logo: fade + slide up + scale
  * - Slogan: fade + slide up with delay
  * - Subtle parallax on scroll
- * - Pure CSS keyframes for performance (no heavy libraries)
+ * - Pure CSS keyframes for performance
  */
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+
+const HHG_LOGO_WHITE = "/manus-storage/hhglogowhite_babfdaea.png";
 
 /* ── High-quality Tbilisi, Georgia — Unsplash (free) ── */
 const TBILISI_IMAGE =
@@ -107,25 +109,26 @@ export default function HeroSection() {
           }}
         />
 
-        {/* HHG Title */}
-        <h1
-          className="font-heading leading-none select-none"
+        {/* HHG Logo Image */}
+        <div
           style={{
-            fontSize: "clamp(4.5rem, 12vw, 10rem)",
-            fontWeight: 700,
-            letterSpacing: entered ? "0.25em" : "0.15em",
-            color: "#ffffff",
-            textShadow: "0 0 60px rgba(197,165,114,0.25), 0 0 120px rgba(197,165,114,0.1)",
             opacity: entered ? 1 : 0,
             transform: entered
               ? "translateY(0) scale(1)"
               : "translateY(40px) scale(0.95)",
             transition:
-              "opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s, transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s, letter-spacing 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s",
+              "opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s, transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s",
           }}
         >
-          HHG
-        </h1>
+          <img
+            src={HHG_LOGO_WHITE}
+            alt="Hebashi Holding Group"
+            className="h-24 sm:h-32 md:h-40 lg:h-48 w-auto object-contain mx-auto"
+            style={{
+              filter: "drop-shadow(0 0 40px rgba(197,165,114,0.2))",
+            }}
+          />
+        </div>
 
         {/* Slogan */}
         <p
@@ -135,7 +138,7 @@ export default function HeroSection() {
             fontWeight: 300,
             letterSpacing: "0.18em",
             color: "rgba(255,255,255,0.75)",
-            marginTop: "1.2rem",
+            marginTop: "1.5rem",
             textTransform: "uppercase",
             opacity: entered ? 1 : 0,
             transform: entered ? "translateY(0)" : "translateY(30px)",
